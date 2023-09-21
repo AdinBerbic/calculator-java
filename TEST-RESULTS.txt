@@ -1,0 +1,42 @@
+1.Nedostatak provjere sintakse izraza: Kod ne vrši provjeru sintakse unijetog izraza. Npr., izraz "5++3" trenutno neæe izazvati grešku, ali bi trebalo.
+
+2.Nedostatak dokumentacije i komentara: Nedostaje dokumentacija i komentari koji bi bolje opisali funkcionalnost koda i metoda. Komentari bi mogli biti korisni za razumijevanje kako kod radi.
+
+3.Nedostatak validacije unosa: Kod pretpostavlja da æe korisnik uvijek unijeti ispravan aritmetièki izraz. Trebalo bi dodati validaciju unosa kako bi se izbjegle greške prilikom unosa neispravnih izraza.
+
+4.Ponavljanje koda: Postoji ponavljanje sliènog koda u Calculate metodi, što otežava održavanje i može dovesti do grešaka prilikom izmjena.
+
+5.Nema testova: Nema jediniènih testova za ovu klasu, što otežava verifikaciju ispravnosti koda.
+
+
+
+Jedinièni test :
+
+import unittest
+from calculator import Calculator
+
+class TestCalculator(unittest.TestCase):
+
+    def test_calculate(self):
+        # Testiranje sabiranja
+        result = Calculator.Run("5+3")
+        self.assertEqual(result, "8.0")
+
+        # Testiranje oduzimanja
+        result = Calculator.Run("10-3")
+        self.assertEqual(result, "7.0")
+
+        # Testiranje množenja
+        result = Calculator.Run("4*5")
+        self.assertEqual(result, "20.0")
+
+        # Testiranje dijeljenja
+        result = Calculator.Run("10/2")
+        self.assertEqual(result, "5.0")
+
+        # Testiranje složenog izraza sa prioritetom operacija
+        result = Calculator.Run("10+5*4+3")
+        self.assertEqual(result, "33.0")
+
+if __name__ == '__main__':
+    unittest.main()
